@@ -1,0 +1,4 @@
+br\com\beecoffee\twgerenciadortarefas\controllers\HomeController.class
+br\com\beecoffee\twgerenciadortarefas\TwGerenciadorTarefasApplication.class
+br\com\beecoffee\twgerenciadortarefas\repositorios\RepositorioTarefa.class
+br\com\beecoffee\twgerenciadortarefas\controllers\TarefasController.class

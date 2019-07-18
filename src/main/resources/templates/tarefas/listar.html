@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Gerenciador de tarefas - Listagem</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+
+	<div class="container">
+		<h3>Listagem de tarefas</h3>
+
+		<a href="/tarefas/inserir" class="btn btn-success">Inserir nova
+			tarefa</a>
+
+		<div th:each="tarefa: ${tarefas}" class="mt-2">
+			<div class="card bg-light mb-3">
+				<div class="card-header" th:text="${tarefa.titulo}"></div>
+				<div class="card-body">
+					<p class="card-text" th:text="${tarefa.descricao}"></p>
+					<p class="card-text"
+						th:text="${'Data de expiração: ' + #dates.format(tarefa.dataExpiracao, 'dd/MM/yyyy')}"></p>
+				</div>
+				<div class="card-footer bg-light">
+					<p>
+						<a th:href="@{/tarefas/alterar/{id}(id = ${tarefa.id})}"
+							class="btn btn-link">Alterar</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>

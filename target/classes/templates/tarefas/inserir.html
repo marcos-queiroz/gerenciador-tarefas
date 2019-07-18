@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Gerenciador de tarefas - Inclusão de nova tarefa</title>
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+</head>
+<body>
+
+	<div th:replace="fragmentos/fragmentos :: cabecalho"></div>
+
+	<div class="container">
+		<h3 th:if="*{id}">Alteração da tarefa</h3>
+		<h3 th:unless="*{id}">Inclusão de nova tarefa</h3>
+
+		<form action="/tarefas/inserir" method="post" class="form-horizontal"
+			th:object="${tarefa}">
+			<input type="hidden" th:field="*{id}">
+			<div class="row">
+				<div class="form-group col-md-6">
+					<div class="alert alert-danger" role="alert"
+						th:if="${#fields.hasErrors('titulo')}">
+						<label th:errors="*{titulo}" class="validation-message"></label>
+					</div>
+					<label for="titulo">Título:</label> <input id="titulo" type="text"
+						class="form-control" th:field="*{titulo}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-6">
+					<div class="alert alert-danger" role="alert"
+						th:if="${#fields.hasErrors('descricao')}">
+						<label th:errors="*{descricao}" class="validation-message"></label>
+					</div>
+					<label for="descricao">Descrição:</label> <input id="descricao"
+						type="text" class="form-control" th:field="*{descricao}">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-md-6">
+					<div class="alert alert-danger" role="alert"
+						th:if="${#fields.hasErrors('dataExpiracao')}">
+						<label th:errors="*{dataExpiracao}" class="validation-message"></label>
+					</div>
+					<label for="dataExpiracao">Data de Expiração:</label> <input
+						id="dataExpiracao" type="date" class="form-control"
+						th:field="*{dataExpiracao}">
+				</div>
+			</div>
+
+			<button type="submit" class="btn btn-primary">Salvar</button>
+		</form>
+	</div>
+
+	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>
